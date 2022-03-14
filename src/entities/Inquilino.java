@@ -48,9 +48,18 @@ public class Inquilino {
 		this.unidade = unidade;
 	}
 
-	public Inquilino(int idInquilino, String nome, int idade, String sexo, String telefone, String email,
-			Unidade unidade) {
+	public Inquilino(int idInquilino, String nome, int idade, String sexo, String telefone, String email) {
+		super();
 		this.idInquilino = idInquilino;
+		this.nome = nome;
+		this.idade = idade;
+		this.sexo = sexo;
+		this.telefone = telefone;
+		this.email = email;
+	}
+
+	public Inquilino(String nome, int idade, String sexo, String telefone, String email) {
+		super();
 		this.nome = nome;
 		this.idade = idade;
 		this.sexo = sexo;
@@ -105,5 +114,13 @@ public class Inquilino {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	@Override
+	public String toString() {
+		return "Id inquilino: " + idInquilino + "\nNome: " + nome + "\nIdade: " + idade + "\nSexo: " + sexo
+				+ "\nTelefone: " + telefone + "\nEmail: " + email;
+	}
+	
+	
 
 }

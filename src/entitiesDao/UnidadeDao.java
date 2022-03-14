@@ -4,14 +4,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import entities.Unidade;
-import utils.Conexao;
 
 public class UnidadeDao implements InterfaceDao<Unidade> {
 
@@ -57,22 +52,36 @@ public class UnidadeDao implements InterfaceDao<Unidade> {
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Unidade> pesquisar() {
-		
-		List<Unidade> unidade = new ArrayList<>();
-		String sql = "select * from unidade";
+		List<Unidade> unidades = null;
 		try {
-			PreparedStatement stm = Conexao.conectar().prepareStatement(sql);
-			ResultSet rs = stm.executeQuery();
-			while (rs.next()) {
-				unidade.add(new Unidade(rs.getInt("id_unidade"),rs.getString("proprietario"),
-						rs.getString("condominio") , rs.getString("endereco")));
-			}
-		} catch (SQLException e) {
+
+			unidades = em.createQuery("from Unidade u").getResultList();
+
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			em.close();
 		}
-		return unidade;
+		return unidades;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Unidade> pesquisarUnidadesDoInquilino(int inquilinoId) {
+		List<Unidade> unidades = null;
+		try {
+
+			unidades = em.createQuery("from Unidade where id_inquilino = " + inquilinoId).getResultList();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
+		return unidades;
 	}
 
 }

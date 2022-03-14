@@ -52,12 +52,23 @@ public class Unidade {
 		this.idUnidade = idUnidade;
 	}
 	
+	public Unidade(String proprietario, String condominio, String endereco, Inquilino inquilino) {
+		super();
+		this.proprietario = proprietario;
+		this.condominio = condominio;
+		this.endereco = endereco;
+		this.inquilino = inquilino;
+	}
+
 	public Unidade(String proprietario, String condominio, String endereco) {
 		this.proprietario = proprietario;
 		this.condominio = condominio;
 		this.endereco = endereco;
 	}
 	
+	
+	
+
 	
 
 	public int getIdUnidade() {
@@ -94,8 +105,8 @@ public class Unidade {
 
 	@Override
 	public String toString() {
-		return "Id unidade: " + idUnidade + "\n  Proprietário: " + proprietario + "\nCondomínio: " + condominio
-				+ "\nEndereço: " + endereco + "\n";
+		return "Id unidade: " + idUnidade + "\nProprietário: " + proprietario + "\nCondomínio: " + condominio
+				+ "\nEndereço: " + endereco + "\nId Inquilino: " + inquilino.getIdInquilino() + "\nNome inquilino: " + inquilino.getNome() + "\n ------------------------------------------------------";
 	}
 	
 	
