@@ -9,21 +9,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.williamdev.apcoders.data.dto.InquilinoDTO;
-import br.com.williamdev.apcoders.service.InquilinoService;
+import br.com.williamdev.apcoders.data.dto.DespesaDTO;
+import br.com.williamdev.apcoders.service.DespesaUnidadeService;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/inquilinos")
-public class InquilinoController {
+@RequestMapping("/api/despesas")
+public class DespesaController {
 
 	@Autowired
-	InquilinoService inquilinoService;
+	DespesaUnidadeService service;
 	
 	@GetMapping
-	public ResponseEntity<List<InquilinoDTO>> findAll() {
-		List<InquilinoDTO> list = inquilinoService.getList();
-		return ResponseEntity.ok().body(list);
+	public ResponseEntity<List<DespesaDTO>> despesa(){
+		List<DespesaDTO> getAll = service.getList();
+		return ResponseEntity.ok().body(getAll);
 	}
 
 }

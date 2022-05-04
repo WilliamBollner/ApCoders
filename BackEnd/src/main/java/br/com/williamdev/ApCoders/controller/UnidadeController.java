@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.williamdev.apcoders.data.dto.UnidadeDTO;
 import br.com.williamdev.apcoders.data.entity.Inquilino;
 import br.com.williamdev.apcoders.data.entity.Unidade;
 import br.com.williamdev.apcoders.service.InquilinoService;
@@ -37,8 +38,8 @@ public class UnidadeController {
 
 
 	@GetMapping
-	public ResponseEntity<List<Unidade>> findAll() {
-		List<Unidade> list = unidadeService.getList();
+	public ResponseEntity<List<UnidadeDTO>> findAll() {
+		List<UnidadeDTO> list = unidadeService.getList();
 		return ResponseEntity.ok().body(list);
 	}
 
@@ -47,6 +48,12 @@ public class UnidadeController {
 
 		Unidade obj = unidadeService.getUnidadeById(id);
 		return ResponseEntity.ok().body(obj);
+	}
+	
+	@GetMapping("/filter/{condominio}")
+	public ResponseEntity<List<Unidade>> findByCondominio(@PathVariable String condominio){
+		List<Unidade> list = unidadeService.getUnidadeByCondominio(condominio);
+		return ResponseEntity.ok().body(list);
 	}
 
 	@PostMapping
