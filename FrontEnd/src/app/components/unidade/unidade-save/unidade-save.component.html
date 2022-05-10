@@ -1,1 +1,59 @@
-<p>unidade-save works!</p>
+<body>
+<div *ngIf="msgRetorno | async" class="row">
+    <div class="col">
+      <div class="alert alert-success" role="alert">
+        Unidade <b>#{{formUnidade.id}} - {{formUnidade.condominioUnidade}}</b> criada com sucesso!
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h2 class="text-primary font-weight-bold" >Criar Unidade</h2>
+      <hr>
+    </div>
+  </div>
+  <form>
+  <div class="mb-3">
+      <input type="text"
+            [(ngModel)]="formUnidade.proprietarioUnidade"
+            name="proprietarioUnidade"
+            id="proprietarioUnidade"
+            placeholder="Proprietario"
+            class="form-control">
+  </div>
+  <div class="mb-3">
+    <input type="text"
+          [(ngModel)]="formUnidade.condominioUnidade"
+          name="condominioUnidade"
+          id="condominioUnidade"
+          placeholder="Condomínio"
+          class="form-control">
+</div>
+<div class="mb-3">
+    <input type="text"
+          [(ngModel)]="formUnidade.enderecoUnidade"
+          name="enderecoUnidade"
+          id="enderecoUnidade"
+          placeholder="Endereço"
+          class="form-control">
+</div>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" id="disabledInput" placeholder="Nome inquilino" aria-disabled="disable">
+  <button class="btn btn-outline-primary" type="button" id="button-addon2">Pesquisar inquilino...</button>
+</div>
+  </form>
+    <!-- <div class="col">
+      <div class="custom-control custom-switch">
+        <input type="checkbox"
+               class="custom-control-input"
+               id="flAtivo"
+               name="flAtivo"
+               [(ngModel)]="formCategoria.flAtivo">
+        <label class="custom-control-label" for="flAtivo">Ativo</label>
+      </div>
+    </div> -->
+  <div class="col" style="float: right;">
+    <button class="btn btn-sma btn-dark" routerLink="/unidades" >Voltar</button>
+    <button class="btn btn-sma btn-success" style="width: 200px; margin-left: 81%;"  (click)="save()" >Salvar</button>
+  </div>
+</body>

@@ -1,6 +1,8 @@
 package br.com.williamdev.apcoders.data.entity;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +16,7 @@ public class Inquilino {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_inquilino")
 	private Long idInquilino;
 	@Column(length = 40, nullable = false)
 	private String nome;
@@ -26,9 +29,7 @@ public class Inquilino {
 	@Column(length = 60, nullable = true)
 	private String email;
 	@OneToMany(mappedBy = "inquilino")
-	private List<Unidade> unidade;
-
-	public Inquilino() {}
+	private List<Unidade> unidade = new ArrayList<>();
 
 	public Long getIdInquilino() {
 		return idInquilino;
@@ -46,7 +47,7 @@ public class Inquilino {
 		this.nome = nome;
 	}
 
-	public Integer getIdade() {
+	public int getIdade() {
 		return idade;
 	}
 
@@ -86,6 +87,24 @@ public class Inquilino {
 		this.unidade = unidade;
 	}
 
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(email, idInquilino, idade, nome, sexo, telefone, unidade);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Inquilino other = (Inquilino) obj;
+		return Objects.equals(email, other.email) && Objects.equals(idInquilino, other.idInquilino)
+				&& idade == other.idade && Objects.equals(nome, other.nome) && Objects.equals(sexo, other.sexo)
+				&& Objects.equals(telefone, other.telefone) && Objects.equals(unidade, other.unidade);
+	}
+
 
 }

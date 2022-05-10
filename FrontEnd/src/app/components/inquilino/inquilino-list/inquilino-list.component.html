@@ -1,1 +1,52 @@
-<p>inquilino-list works!</p>
+<body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="../../../../assets/pessoas.png" alt="" width="30" height="24">
+        </a>
+        <button routerLink="/inquilino-save" class="btn btn-outline-success me-2" type="button">Adicionar Inquilino</button>
+        <form class="d-flex">
+          <input class="form-control me-1" type="search" placeholder="Pesquisar Id" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+        </form>
+      </div>
+    </nav>
+  
+  <table class="table table-striped table-hover" style="text-align: center;">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Sexo</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">Email</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let inquilino of listInquilinos$ | async" style="text-align: center;">
+          <td>{{ inquilino.id }}</td>
+          <td>{{ inquilino.nomeInquilino }}</td>
+          <td>{{ inquilino.sexoInquilino }}</td>
+          <td>{{ inquilino.telefoneInquilino }}</td>
+          <td>{{ inquilino.emailInquilino }}</td>
+          <td>
+            <div class="container-fluid">
+              <div class="col">
+                <a routerLink="/unidades" class="btn btn-sma btn-info ml-1">Ver</a>
+                <a routerLink="/unidades-edit/{{ inquilino.id }}" class="btn btn-sma btn-warning ml-1">Editar</a>
+                <button (click)="confirmAction(inquilino)" class="btn btn-sma btn-danger ml-1"
+                  data-toggle="modal" data-target="#modalDeleteInquilino">Delete</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div id="modal-delete-container">
+      <app-unidade-modal-delete
+        [statusDelete]="monitoraStatusAction$"
+        [unidadeDel]="inquilinoAction"
+       ></app-unidade-modal-delete>
+    </div>

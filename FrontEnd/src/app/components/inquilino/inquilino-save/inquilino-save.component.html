@@ -1,1 +1,53 @@
-<p>inquilino-save works!</p>
+<body>
+    <div *ngIf="msgRetorno | async" class="row">
+        <div class="col">
+          <div class="alert alert-success" role="alert">
+            Unidade <b>#{{formInquilino.id}} - {{formInquilino.nomeInquilino}}</b> criada com sucesso!
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h2 class="text-primary font-weight-bold" >Criar Inquilino</h2>
+          <hr>
+        </div>
+      </div>
+      <form>
+      <div class="mb-3">
+          <input type="text"
+                [(ngModel)]="formInquilino.nomeInquilino"
+                name="inquilinoNome"
+                id="InquilinoNome"
+                placeholder="Nome"
+                class="form-control">
+      </div>
+      <div class="form-group">
+          <select name="sexo" id="sexo" class="form-control" [(ngModel)]="formInquilino.sexoInquilino">
+            <option value="">Selecione...</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+            <option value="O">Outros</option>
+          </select>
+      </div>
+    <div class="mb-3">
+        <input type="number"
+              [(ngModel)]="formInquilino.telefoneInquilino"
+              name="telefoneInquilino"
+              id="telefoneInquilino"
+              placeholder="Telefone"
+              class="form-control">
+    </div>
+    <div class="mb-3">
+        <input type="email"
+              [(ngModel)]="formInquilino.emailInquilino"
+              name="emailInquilino"
+              id="emailInquilino"
+              placeholder="Email"
+              class="form-control">
+    </div>
+      </form>
+      <div class="col" style="float: right;">
+        <button class="btn btn-sma btn-dark" routerLink="/unidades" >Voltar</button>
+        <button class="btn btn-sma btn-success" style="width: 200px; margin-left: 81%;"  (click)="save()" >Salvar</button>
+      </div>
+    </body>

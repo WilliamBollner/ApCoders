@@ -1,15 +1,16 @@
 <body>
-  <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-      Dropdown link
-    </a>
-  
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
-  </div>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="../../../../assets/predio-comercial.png" alt="" width="30" height="24">
+      </a>
+      <button routerLink="/unidade-save" class="btn btn-outline-success me-2" type="button">Adicionar Unidade</button>
+      <form class="d-flex">
+        <input class="form-control me-1" type="search" placeholder="Pesquisar Id" aria-label="Search">
+        <button class="btn btn-outline-success" (click)="getById()" type="submit">Pesquisar</button>
+      </form>
+    </div>
+  </nav>
 
 <table class="table table-striped table-hover" style="text-align: center;">
     <thead>
@@ -23,20 +24,29 @@
     </thead>
     <tbody>
       <tr *ngFor="let unidade of listUnidades$ | async" style="text-align: center;">
-        <td>{{ unidade.idUnidade }}</td>
-        <td>{{ unidade.proprietario }}</td>
-        <td>{{ unidade.condominio }}</td>
-        <td>{{ unidade.inquilino?.nome }}</td>
+        <td>{{ unidade.id }}</td>
+        <td>{{ unidade.proprietarioUnidade }}</td>
+        <td>{{ unidade.condominioUnidade }}</td>
+        <td>{{ unidade.inquilino?.nomeInquilino }}</td>
         <td>
           <div class="container-fluid">
             <div class="col">
-              <a routerLink="/unidades" class="btn btn-sma btn-info" style="margin-left: 5px">Ver</a>
-              <a routerLink="/unidades-edit/{{ unidade.idUnidade }}" class="btn btn-sma btn-warning" style="margin-left: 5px">Editar</a>
-              <button (click)="delete(unidade.idUnidade)" class="btn btn-sma btn-danger" style="margin-left: 5px">Deletar</button>
+              <a routerLink="/unidades" class="btn btn-sma btn-info ml-1">Ver</a>
+              <a routerLink="/unidades-edit/{{ unidade.id }}" class="btn btn-sma btn-warning ml-1">Editar</a>
+              <button (click)="confirmAction(unidade)" class="btn btn-sma btn-danger ml-1"
+                data-toggle="modal" data-target="#modalDeleteUnidade">Delete</button>
             </div>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
+
+  <div id="modal-delete-container">
+    <app-unidade-modal-delete
+      [statusDelete]="monitoraStatusAction$"
+      [unidadeDel]="unidadeAction"
+     ></app-unidade-modal-delete>
+  </div>
+
 </body>

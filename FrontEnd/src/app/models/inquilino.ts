@@ -1,10 +1,14 @@
 export class Inquilino {
 
-    idInquilino?: number;
-    nome?: string;
-    idade?: number;
-    sexo?: string;
-    telefone?: number;
-    email?: string;
+    id?: number;
+    nomeInquilino?: string;
+    idadeInquilino?: number;
+    sexoInquilino?: string;
+    telefoneInquilino?: number;
+    emailInquilino?: string;
+
+    constructor(obj: Partial<Inquilino>){
+        Object.assign(this, obj)
+    }
 
 }

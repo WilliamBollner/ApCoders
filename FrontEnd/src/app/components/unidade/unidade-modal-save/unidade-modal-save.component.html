@@ -1,0 +1,19 @@
+<div class="modal fade" id="modalSaveNota" tabindex="-1" aria-labelledby="modalSaveNotaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalDeleteNotaLabel">Pesquisar Inquilino </h5>
+          <button (click)="updateStatus(false)" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-unidade-save [status]="statusSave$" [formUnidade]="unidadeSave"></app-unidade-save>
+        </div>
+        <div class="modal-footer">
+          <button (click)="updateStatus(false)" type="button"
+          class="btn btn-secondary" id="btnModalSaveUnidadeCancel" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>

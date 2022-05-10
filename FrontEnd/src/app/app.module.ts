@@ -14,7 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UnidadeModalSaveComponent } from './components/unidade/unidade-modal-save/unidade-modal-save.component';
+import { UnidadeModalDeleteComponent } from './components/unidade/unidade-modal-delete/unidade-modal-delete.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +28,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DespesaSaveComponent,
     SidebarComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    UnidadeModalSaveComponent,
+    UnidadeModalDeleteComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

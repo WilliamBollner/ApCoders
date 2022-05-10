@@ -23,4 +23,8 @@ export class UnidadeService {
   addUnidade(unidade: Unidade){
     return this.http.post<Unidade>(this.url, unidade);
   }
+
+  deleteUnidade(id: number){
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }

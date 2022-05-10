@@ -2,10 +2,10 @@ import { Despesa } from "./despesa";
 import { Inquilino } from "./inquilino";
 
 export class Unidade {
-    idUnidade?: number;
-    proprietario?: string;
-    condominio?: string;
-    endereco?: string;
+    id?: number;
+    proprietarioUnidade?: string;
+    condominioUnidade?: string;
+    enderecoUnidade?: string;
     inquilino?: Inquilino;
     despesa?: Despesa[];
 
