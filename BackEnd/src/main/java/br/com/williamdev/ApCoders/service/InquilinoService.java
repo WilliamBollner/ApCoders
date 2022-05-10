@@ -41,7 +41,24 @@ public class InquilinoService {
 		return obj.orElseThrow(() -> new ControllerNotFoundException(id));
 	}
 	
-	public Inquilino saveInquilino(Inquilino inquilino) {
+	public InquilinoDTO saveInquilino(InquilinoDTO inquilinoDTO) {
+		Inquilino inquilino = mapper.map(inquilinoDTO, Inquilino.class);
+		repository.save(inquilino);
+		InquilinoDTO inquilinoResponse = mapper.map(inquilino, InquilinoDTO.class);
+		return inquilinoResponse;
+	}
+	
+	public Inquilino updateInquilno(Long id, Inquilino inquilnoRequest) {
+		Inquilino inquilino = repository.findById(id)
+				.orElseThrow(() -> new ControllerNotFoundException(id));
+		
+		inquilino.setEmail(inquilino.getEmail());
+		inquilino.setIdade(inquilino.getIdade());
+		inquilino.setIdInquilino(inquilino.getIdInquilino());
+		inquilino.setNome(inquilino.getNome());
+		inquilino.setSexo(inquilino.getSexo());
+		inquilino.setTelefone(inquilino.getTelefone());
+		inquilino.setUnidade(inquilino.getUnidade());
 		return repository.save(inquilino);
 	}
 

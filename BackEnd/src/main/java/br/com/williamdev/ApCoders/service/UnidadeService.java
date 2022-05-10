@@ -36,17 +36,21 @@ public class UnidadeService {
 		return unidadeRepository.findAll().stream().map(unidade -> mapper.map(unidade, UnidadeDTO.class)).collect(Collectors.toList());
 	}
 
-	public Unidade getUnidadeById(Long id) {
+	public UnidadeDTO getUnidadeById(Long id) {
 		Optional<Unidade> obj = unidadeRepository.findById(id);
-		return obj.orElseThrow(() -> new ControllerNotFoundException(id));
+		UnidadeDTO unidadeResponse = mapper.map(obj, UnidadeDTO.class);
+		return unidadeResponse;
 	}
 	
-	public List<Unidade> getUnidadeByCondominio(String condominio){
-		return unidadeRepository.findByCondominioContaining(condominio);
+	public List<UnidadeDTO> getUnidadeByCondominio(String condominio){
+		return unidadeRepository.findByCondominioContaining(condominio).stream().map(unidade -> mapper.map(unidade, UnidadeDTO.class)).collect(Collectors.toList());
 	}
 	
-	public Unidade saveUnidade(Unidade unidade) {
-		return unidadeRepository.save(unidade);
+	public UnidadeDTO saveUnidade(UnidadeDTO unidadeDTO) {
+		Unidade unidade = mapper.map(unidadeDTO, Unidade.class);
+		unidadeRepository.save(unidade);
+		UnidadeDTO unidadeResponse = mapper.map(unidade, UnidadeDTO.class);
+		return unidadeResponse;
 	}
 
 	public void delete(Long id) {

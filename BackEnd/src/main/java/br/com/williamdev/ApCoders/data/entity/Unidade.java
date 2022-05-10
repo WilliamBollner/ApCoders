@@ -2,7 +2,6 @@ package br.com.williamdev.apcoders.data.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,8 +29,26 @@ public class Unidade {
 	@JoinColumn(name = "id_inquilino")
 	private Inquilino inquilino;
 	@OneToMany(mappedBy = "unidade")
-	private List<Despesa> despesa = new ArrayList<>();
+	private List<DespesaUnidade> despesa = new ArrayList<>();
 	
+	public Unidade() {}
+	
+	public Inquilino getInquilino() {
+		return inquilino;
+	}
+
+	public void setInquilino(Inquilino inquilino) {
+		this.inquilino = inquilino;
+	}
+
+	public List<DespesaUnidade> getDespesa() {
+		return despesa;
+	}
+
+	public void setDespesa(List<DespesaUnidade> despesa) {
+		this.despesa = despesa;
+	}
+
 	public Long getIdUnidade() {
 		return idUnidade;
 	}
@@ -63,42 +80,6 @@ public class Unidade {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-
-	public Inquilino getInquilino() {
-		return inquilino;
-	}
-
-	public void setInquilino(Inquilino inquilino) {
-		this.inquilino = inquilino;
-	}
-
-	public List<Despesa> getDespesa() {
-		return despesa;
-	}
-
-	public void setDespesa(List<Despesa> despesa) {
-		this.despesa = despesa;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(condominio, despesa, endereco, idUnidade, inquilino, proprietario);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Unidade other = (Unidade) obj;
-		return Objects.equals(condominio, other.condominio) && Objects.equals(despesa, other.despesa)
-				&& Objects.equals(endereco, other.endereco) && Objects.equals(idUnidade, other.idUnidade)
-				&& Objects.equals(inquilino, other.inquilino) && Objects.equals(proprietario, other.proprietario);
-	}
-	
 	
 
 }

@@ -2,74 +2,62 @@ package br.com.williamdev.apcoders.data.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class InquilinoDTO {
 
-	public Long idInquilinoDTO;
+	public Long id;
 	public String nomeInquilino;
 	public Integer idadeInquilino;
-	public String sexoInquillino;
+	public String sexoInquilino;
 	public String telefoneInquilino;
 	public String emailInquilino;
-	public List<UnidadeDTO> listaUnidades;
+	@JsonIgnore
+	public List<UnidadeDTO> unidade;
 	
-
-	public Long getIdInquilinoDTO() {
-		return idInquilinoDTO;
+	
+	public Long getId() {
+		return id;
 	}
-
-	public void setIdInquilinoDTO(Long idInquilinoDTO) {
-		this.idInquilinoDTO = idInquilinoDTO;
+	public void setId(Long idInquilino) {
+		this.id = idInquilino;
 	}
-
 	public String getNomeInquilino() {
 		return nomeInquilino;
 	}
-
 	public void setNomeInquilino(String nomeInquilino) {
 		this.nomeInquilino = nomeInquilino;
 	}
-
-	public int getIdadeInquilino() {
+	public Integer getIdadeInquilino() {
 		return idadeInquilino;
 	}
-
 	public void setIdadeInquilino(Integer idadeInquilino) {
 		this.idadeInquilino = idadeInquilino;
 	}
-
-	public String getSexoInquillino() {
-		return sexoInquillino;
+	public String getSexoInquilino() {
+		return sexoInquilino;
 	}
-
-	public void setSexoInquillino(String sexoInquillino) {
-		this.sexoInquillino = sexoInquillino;
+	public void setSexoInquilino(String sexoInquillino) {
+		this.sexoInquilino = sexoInquillino;
 	}
-
 	public String getTelefoneInquilino() {
 		return telefoneInquilino;
 	}
-
 	public void setTelefoneInquilino(String telefoneInquilino) {
 		this.telefoneInquilino = telefoneInquilino;
 	}
-
 	public String getEmailInquilino() {
 		return emailInquilino;
 	}
-
 	public void setEmailInquilino(String emailInquilino) {
 		this.emailInquilino = emailInquilino;
 	}
-
-	public List<UnidadeDTO> getListaUnidades() {
-		return listaUnidades;
+	public List<UnidadeDTO> getUnidade() {
+		return unidade;
 	}
-
-	public void setListaUnidades(List<UnidadeDTO> listaUnidades) {
-		this.listaUnidades = listaUnidades;
+	public void setUnidade(List<UnidadeDTO> unidade) {
+		this.unidade = unidade;
 	}
-	
-	
 	
 	
 
